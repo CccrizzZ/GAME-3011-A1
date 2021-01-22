@@ -11,11 +11,14 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
 
 
     public Image spriteImage;
+    public Sprite[] ResultImages;
+    bool clicked;
 
-    public Sprite AfterClick;
 
     void Start()
     {
+        clicked = false;
+
         spriteImage = GetComponent<Image>();
     }
 
@@ -27,14 +30,37 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
     public void Test()
     {
         print("Button Clicked");
-        spriteImage.sprite = AfterClick;
+
+        int rand = Random.Range(1,100);
+        if (rand <= 50)
+        {
+            print(20);
+            spriteImage.sprite = ResultImages[0];
+
+        }
+        else if (rand <= 90 && rand > 50)
+        {
+            print(50);
+            spriteImage.sprite = ResultImages[1];
+            
+        }
+        else if (rand > 90)
+        {
+            spriteImage.sprite = ResultImages[2];
+            print(100);
+        }
+
+        clicked = true;
     }
 
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Test();
+        if (!clicked)
+        {
+            Test();
+        }
     }
 
 }
