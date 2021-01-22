@@ -42,7 +42,6 @@ public class FPS_Movement : MonoBehaviour
 
 
 
-        Debug.Log(isGrounded);
         // jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
