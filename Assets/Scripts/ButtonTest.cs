@@ -34,11 +34,17 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
         int rand = Random.Range(1,100);
         if (rand <= 50)
         {
-            print(20);
-            spriteImage.sprite = ResultImages[0];
+            print(0);
+            spriteImage.sprite = ResultImages[3];
 
         }
-        else if (rand <= 90 && rand > 50)
+        else if (rand <= 80 && rand > 50)
+        {
+            print(20);
+            spriteImage.sprite = ResultImages[0];
+            
+        }
+        else if (rand <= 90 && rand > 80)
         {
             print(50);
             spriteImage.sprite = ResultImages[1];
