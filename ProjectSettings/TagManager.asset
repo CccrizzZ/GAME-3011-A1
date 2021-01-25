@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ResourceCube
+  - Chance
+  - Resource
+  - MiniGameCanvas
   layers:
   - Default
   - TransparentFX
