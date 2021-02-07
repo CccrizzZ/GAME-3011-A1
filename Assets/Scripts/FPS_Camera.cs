@@ -21,10 +21,23 @@ public class FPS_Camera : MonoBehaviour
     void Start()
     {
         canLook = false;
+    }
 
 
+    public void SetCameraMove()
+    {
+        canLook = true;
         // lock cursor to the center of screen
-        // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
+    
+    
+    }
+
+    public void SetCameraFreeze()
+    {
+        canLook = false;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
 

@@ -16,6 +16,9 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
     bool clicked;
     CanvasScript cs;
 
+    int ResourceValue;
+
+
     void Start()
     {
 
@@ -31,7 +34,7 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
 
     public void OnCubeClicked()
     {
-        print("Button Clicked");
+        print("scan");
 
         int rand = UnityEngine.Random.Range(1,100);
         if (rand <= 50)
@@ -44,35 +47,47 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
         {
             print(20);
             spriteImage.sprite = ResultImages[0];
-            cs.resourcesCount += 20;
+            ResourceValue = 20;
         }
         else if (rand <= 90 && rand > 80)
         {
             print(50);
             spriteImage.sprite = ResultImages[1];
-            cs.resourcesCount += 50;
+            ResourceValue = 50;
             
         }
         else if (rand > 90)
         {
             print(100);
             spriteImage.sprite = ResultImages[2];
-            cs.resourcesCount += 100;
+            ResourceValue = 100;
 
         }
 
         clicked = true;
         cs.chancesCount--;
+    }
+
+
+
+    void OnExtract()
+    {
+        cs.resourcesCount += ResourceValue;
         cs.UpdateChanceAndReources();
+        Destroy(gameObject);
     }
 
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!clicked && cs.chancesCount > 0)
+        if (!clicked && cs.chancesCount > 0 && cs.scanmode)
         {
             OnCubeClicked();
+        }
+        else if(clicked && cs.extractmode)
+        {
+            OnExtract();
         }
     }
 

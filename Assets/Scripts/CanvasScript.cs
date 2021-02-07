@@ -12,13 +12,18 @@ public class CanvasScript : MonoBehaviour
     public Text chances; 
     public Text resources; 
 
-
+    public bool scanmode;
+    public bool extractmode;
 
     public GameObject sourceCube;
     
 
     void Start()
     {
+
+        scanmode = true;
+        extractmode = false;
+        
         resourcesCount = 0;
         chancesCount = 6;
 
@@ -27,18 +32,20 @@ public class CanvasScript : MonoBehaviour
 
         Vector3 temp = transform.position;
 
-        for (var i = 1; i <= 5; i++)
+
+        // throw 100 tiles onto the canvas
+        for (var i = 1; i <= 10; i++)
         {
-            for (var j = 1; j <= 5; j++)
+            for (var j = 1; j <= 10; j++)
             {
-                temp.y = i * 100 - 300;
-                temp.x = j * 100 - 300;
+                temp.y = i * 100 - 500;
+                temp.x = j * 100 - 500;
                 GameObject newCube = Instantiate(sourceCube, temp, transform.rotation);
                 newCube.transform.SetParent(transform,false);
             }
-
-
         }
+
+
 
         
     }
@@ -48,5 +55,7 @@ public class CanvasScript : MonoBehaviour
         chances.text = chancesCount.ToString();
         resources.text = resourcesCount.ToString();
     }
+
+
     
 }
