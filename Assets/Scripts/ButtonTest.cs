@@ -65,7 +65,9 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
         }
 
         clicked = true;
-        cs.chancesCount--;
+        cs.ScanChanceCount--;
+        cs.UpdateChanceAndReources();
+
     }
 
 
@@ -73,6 +75,7 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
     void OnExtract()
     {
         cs.resourcesCount += ResourceValue;
+        cs.ExtractChanceCount -= 1;
         cs.UpdateChanceAndReources();
         Destroy(gameObject);
     }
@@ -81,11 +84,11 @@ public class ButtonTest : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!clicked && cs.chancesCount > 0 && cs.scanmode)
+        if (!clicked && cs.ScanChanceCount > 0 && cs.scanmode)
         {
             OnCubeClicked();
         }
-        else if(clicked && cs.extractmode)
+        else if(clicked && cs.extractmode && cs.ExtractChanceCount > 0)
         {
             OnExtract();
         }

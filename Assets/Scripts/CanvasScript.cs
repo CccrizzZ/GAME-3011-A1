@@ -8,8 +8,12 @@ public class CanvasScript : MonoBehaviour
 {
 
     public int resourcesCount;
-    public int chancesCount;
-    public Text chances; 
+    public int ScanChanceCount;
+    public int ExtractChanceCount;
+
+    public Text ScanChances;
+    public Text ExtractChances; 
+
     public Text resources; 
 
     public bool scanmode;
@@ -17,6 +21,10 @@ public class CanvasScript : MonoBehaviour
 
     public GameObject sourceCube;
     
+    GameObject[,] cubeArray;
+    int row;
+    int col;
+
 
     void Start()
     {
@@ -25,12 +33,20 @@ public class CanvasScript : MonoBehaviour
         extractmode = false;
         
         resourcesCount = 0;
-        chancesCount = 6;
+        ScanChanceCount = 6;
+        ExtractChanceCount = 3;
 
-        chances.text = chancesCount.ToString();
+        ScanChances.text = ScanChanceCount.ToString();
+        ExtractChances.text = ExtractChanceCount.ToString();
+        
         resources.text = resourcesCount.ToString();
 
         Vector3 temp = transform.position;
+
+        
+
+
+
 
 
         // throw 100 tiles onto the canvas
@@ -52,8 +68,10 @@ public class CanvasScript : MonoBehaviour
 
     public void UpdateChanceAndReources()
     {
-        chances.text = chancesCount.ToString();
+        ScanChances.text = ScanChanceCount.ToString();
+        ExtractChances.text = ExtractChanceCount.ToString();
         resources.text = resourcesCount.ToString();
+
     }
 
 
